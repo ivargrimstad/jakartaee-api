@@ -252,24 +252,24 @@
                         </execution>
                     </executions>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.1.0</version>
-                    <configuration>
-                        <failOnError>true</failOnError>
-                        <additionalJOptions>${javadoc.options}</additionalJOptions>
-                        <docfilessubdirs>true</docfilessubdirs>
-                        <javadocDirectory>${project.basedir}/../src/main/javadoc</javadocDirectory>
-                        <attach>true</attach>
-                        <doclint>none</doclint>
-                        <doctitle>${apidocs.doctitle}</doctitle>
-                        <windowtitle>${apidocs.windowtitle}</windowtitle>
-                        <header>${apidocs.header}</header>
-                        <bottom>${apidocs.bottom}</bottom>
-                        <sourcepath>${project.build.directory}/sources-dependency</sourcepath>
-                    </configuration>
-                </plugin>
+<!--                <plugin>-->
+<!--                    <groupId>org.apache.maven.plugins</groupId>-->
+<!--                    <artifactId>maven-javadoc-plugin</artifactId>-->
+<!--                    <version>3.1.0</version>-->
+<!--                    <configuration>-->
+<!--                        <failOnError>true</failOnError>-->
+<!--                        <additionalJOptions>${javadoc.options}</additionalJOptions>-->
+<!--                        <docfilessubdirs>true</docfilessubdirs>-->
+<!--                        <javadocDirectory>${project.basedir}/../src/main/javadoc</javadocDirectory>-->
+<!--                        <attach>true</attach>-->
+<!--                        <doclint>none</doclint>-->
+<!--                        <doctitle>${apidocs.doctitle}</doctitle>-->
+<!--                        <windowtitle>${apidocs.windowtitle}</windowtitle>-->
+<!--                        <header>${apidocs.header}</header>-->
+<!--                        <bottom>${apidocs.bottom}</bottom>-->
+<!--                        <sourcepath>${project.build.directory}/sources-dependency</sourcepath>-->
+<!--                    </configuration>-->
+<!--                </plugin>-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
@@ -317,6 +317,8 @@
                                         <fileset dir="${apidocs.api.tmp}">
                                             <include name="*-api-sources-jar/**"/>
                                             <exclude name="jakarta.enterprise.cdi-api-sources-jar/**"/>
+                                            <exclude name="jakarta.xml.ws-api-sources-jar/**"/>
+
                                             <!-- web-profile -->
                                             <exclude name="jakarta.authentication-api-sources-jar/**"/>
                                             <exclude name="jakarta.enterprise.concurrent-api-sources-jar/**"/>
@@ -426,7 +428,19 @@ module jakarta.faces {
     requires jakarta.xml.ws;
 }
                                     </echo>
-                                </target>
+
+                                    <copy todir="${apidocs.api.src}/jakarta.xml.ws" >
+                                        <fileset dir="${apidocs.api.tmp}/jakarta.xml.ws-api-sources-jar">
+                                            <include name="**/*" />
+                                        </fileset>
+                                    </copy>
+
+                                    <echo file="${apidocs.api.src}/jakarta.xml.ws/jakarta/xml/ws/wsaddressing/package-info.java" append="false">
+                                        package jakarta.xml.ws.wsaddressing;
+                                    </echo>
+                                    <echo file="${project.build.directory}/sources-dependency/jakarta.xml.ws/jakarta/xml/ws/wsaddressing/package-info.java" append="false">
+                                        package jakarta.xml.ws.wsaddressing;
+                                    </echo>      </target>
                             </configuration>
                         </execution>
                         <execution>

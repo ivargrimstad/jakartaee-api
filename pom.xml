@@ -31,6 +31,16 @@
     <name>Jakarta EE API parent</name>
     <description>Jakarta EE API parent</description>
 
+    <scm>
+        <connection>scm:git:git@github.com:jakartaee/jakartaee-api</connection>
+        <developerConnection>scm:git:git@github.com:jakartaee/jakartaee-api</developerConnection>
+        <url>https://github.com/jakartaee/jakartaee-api</url>
+    </scm>
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/jakartaee/jakartaee-api/issues</url>
+    </issueManagement>
+
     <modules>
         <module>jakartaee-bom</module>
         <module>jakartaee-core-api</module>

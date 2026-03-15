@@ -33,6 +33,12 @@
         <maven.deploy.skip>${coreprofile.deploy.skip}</maven.deploy.skip>
     </properties>
 
+    <scm>
+        <connection>scm:git:git@github.com:jakartaee/jakartaee-api</connection>
+        <developerConnection>scm:git:git@github.com:jakartaee/jakartaee-api</developerConnection>
+        <url>https://github.com/jakartaee/jakartaee-api/jakartaee-core-api</url>
+    </scm>
+
     <build>
         <plugins>
             <plugin>

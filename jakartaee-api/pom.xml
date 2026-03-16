@@ -35,7 +35,7 @@
     <scm>
         <connection>scm:git:git@github.com:jakartaee/jakartaee-api</connection>
         <developerConnection>scm:git:git@github.com:jakartaee/jakartaee-api</developerConnection>
-        <url>https://github.com/jakartaee/jakartaee-api/jakartaee-api</url>
+        <url>https://github.com/jakartaee/jakartaee-api</url>
     </scm>
 
     <build>
